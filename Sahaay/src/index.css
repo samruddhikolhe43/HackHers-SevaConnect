@@ -1,0 +1,57 @@
+@import 'leaflet/dist/leaflet.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+  .dark {
+    color-scheme: dark;
+  }
+  
+  body {
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  /* Accessible focus rings */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-forest-500 ring-offset-2 ring-offset-ivory-50 dark:ring-forest-400 dark:ring-offset-night-900;
+  }
+}
+
+/* Custom smooth scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-sage-300 dark:bg-night-700 rounded-full hover:bg-forest-400 dark:hover:bg-forest-600 transition-colors;
+}
+
+/* Custom Leaflet overrides for dark mode & clean aesthetic */
+.leaflet-container {
+  font-family: inherit;
+  width: 100%;
+  height: 100%;
+  border-radius: 0.75rem;
+  z-index: 10;
+}
+
+.leaflet-popup-content-wrapper {
+  @apply rounded-xl shadow-card dark:shadow-card-dark bg-white dark:bg-night-800 text-slate-800 dark:text-slate-100 p-1 border border-sage-200 dark:border-night-700;
+}
+
+.leaflet-popup-tip {
+  @apply bg-white dark:bg-night-800 border-sage-200 dark:border-night-700;
+}
+
+.dark .leaflet-tile-pane {
+  filter: brightness(0.85) invert(1) contrast(1.2) hue-rotate(180deg) saturate(0.3);
+}
